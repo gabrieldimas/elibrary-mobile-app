@@ -52,7 +52,7 @@ class MyHomePage extends StatelessWidget {
               ),
 
               // Buttons
-              SizedBox(height: 16),
+              SizedBox(height: 86),
               ElevatedButton(
                 onPressed: () {
                   // Handle the action for the first button
@@ -60,7 +60,7 @@ class MyHomePage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     primary: Colors.deepPurple,
                     onPrimary: Colors.white,
-                    padding: const EdgeInsets.all(24.12),
+                    padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     )),
@@ -77,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     primary: Colors.deepPurple,
                     onPrimary: Colors.white,
-                    padding: const EdgeInsets.all(24.12),
+                    padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     )),
