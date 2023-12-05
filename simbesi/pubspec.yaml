@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    assets:
+    - assets/college-project-amico.png
   google_fonts: ^6.1.0
 
 

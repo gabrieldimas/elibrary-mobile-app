@@ -30,15 +30,14 @@ class MyHomePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Title
               Container(
-                margin: EdgeInsets.only(top: 32),
+                margin: EdgeInsets.only(top: 128),
                 child: Text(
-                  'Halo, selamat datang di Simbesi',
-                  style: TextStyle(fontSize: 24),
+                  'Halo, Selamat Datang di Simbesi',
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
 
@@ -46,7 +45,7 @@ class MyHomePage extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 32),
                 child: Image.asset(
-                  '../assets/college-project-amico.png', // Replace with your image asset
+                  'assets/college-project-amico.png',
                   width: 287,
                   height: 287,
                 ),
@@ -58,14 +57,34 @@ class MyHomePage extends StatelessWidget {
                 onPressed: () {
                   // Handle the action for the first button
                 },
-                child: Text('Lihat Ranking Sementara'),
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.deepPurple,
+                    onPrimary: Colors.white,
+                    padding: const EdgeInsets.all(24.12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    )),
+                child: Text(
+                  'Lihat Ranking Sementara',
+                  style: GoogleFonts.poppins(fontSize: 14),
+                ),
               ),
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   // Handle the action for the second button
                 },
-                child: Text('Tambah Data Siswa'),
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.deepPurple,
+                    onPrimary: Colors.white,
+                    padding: const EdgeInsets.all(24.12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    )),
+                child: Text(
+                  'Tambah Data Siswa',
+                  style: GoogleFonts.poppins(fontSize: 14),
+                ),
               ),
             ],
           ),
