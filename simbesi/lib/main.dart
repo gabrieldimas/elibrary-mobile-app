@@ -54,9 +54,7 @@ class MyHomePage extends StatelessWidget {
               // Buttons
               SizedBox(height: 86),
               ElevatedButton(
-                onPressed: () {
-                  // Handle the action for the first button
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                     primary: Colors.deepPurple,
                     onPrimary: Colors.white,
@@ -71,9 +69,7 @@ class MyHomePage extends StatelessWidget {
               ),
               SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () {
-                  // Handle the action for the second button
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                     primary: Colors.deepPurple,
                     onPrimary: Colors.white,
