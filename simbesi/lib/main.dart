@@ -37,13 +37,13 @@ class MyHomePage extends StatelessWidget {
                 margin: EdgeInsets.only(top: 128),
                 child: Text(
                   'Halo, Selamat Datang di Simbesi',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                 ),
               ),
 
               // Image
               Container(
-                margin: EdgeInsets.only(top: 32),
+                margin: EdgeInsets.only(top: 86),
                 child: Image.asset(
                   'assets/college-project-amico.png',
                   width: 287,
