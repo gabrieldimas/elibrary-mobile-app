@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Simbesi',
+      title: 'eLibrary',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -36,16 +36,15 @@ class MyHomePage extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 128),
                 child: Text(
-                  'Halo, Selamat Datang di Simbesi',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                  'eLibrary',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
                 ),
               ),
 
               // Image
               Container(
                 margin: EdgeInsets.only(top: 86),
-                child: Image.asset(
-                  'assets/college-project-amico.png',
+                child: Image.network('https://storyset.com/illustration/bibliophile/rafiki'),
                   width: 287,
                   height: 287,
                 ),
@@ -63,7 +62,7 @@ class MyHomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                     )),
                 child: Text(
-                  'Lihat Ranking Sementara',
+                  'Pinjam Buku',
                   style: GoogleFonts.poppins(fontSize: 14),
                 ),
               ),
@@ -78,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                     )),
                 child: Text(
-                  'Tambah Data Siswa',
+                  'Lihat List Buku',
                   style: GoogleFonts.poppins(fontSize: 14),
                 ),
               ),
