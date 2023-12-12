@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'eLibrary',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
@@ -44,7 +44,8 @@ class MyHomePage extends StatelessWidget {
               // Image
               Container(
                 margin: EdgeInsets.only(top: 86),
-                child: Image.network("https://storyset.com/illustration/bibliophile/rafiki",
+                child: Image.network(
+                  "https://storyset.com/illustration/bibliophile/rafiki",
                   width: 287,
                   height: 287,
                 ),
@@ -54,7 +55,7 @@ class MyHomePage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.deepPurple,
+                    primary: Color(0xff5162AE),
                     onPrimary: Colors.white,
                     padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
                     shape: RoundedRectangleBorder(
@@ -69,7 +70,7 @@ class MyHomePage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.deepPurple,
+                    primary: Color(0xff5162AE),
                     onPrimary: Colors.white,
                     padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
                     shape: RoundedRectangleBorder(
