@@ -44,12 +44,11 @@ class MyHomePage extends StatelessWidget {
               // Image
               Container(
                 margin: EdgeInsets.only(top: 86),
-                child: Image.network('https://storyset.com/illustration/bibliophile/rafiki'),
+                child: Image.network("https://storyset.com/illustration/bibliophile/rafiki",
                   width: 287,
                   height: 287,
                 ),
               ),
-
               // Buttons
               SizedBox(height: 86),
               ElevatedButton(
