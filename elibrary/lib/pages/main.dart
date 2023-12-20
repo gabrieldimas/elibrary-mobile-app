@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'book_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -68,7 +69,12 @@ class MyHomePage extends StatelessWidget {
               ),
               SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BookList()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                     primary: Color(0xff5162AE),
                     onPrimary: Colors.white,
