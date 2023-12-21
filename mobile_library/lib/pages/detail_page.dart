@@ -190,7 +190,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                     onPrimary: Color(0xff5162AE),
                                     side: BorderSide(color: Color(0xff5162AE)),
                                     padding: const EdgeInsets.fromLTRB(
-                                        48, 16, 48, 16),
+                                        40, 16, 40, 16),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(6),
                                     )),
@@ -211,7 +211,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                     primary: Color(0xff5162AE),
                                     onPrimary: Colors.white,
                                     padding: const EdgeInsets.fromLTRB(
-                                        48, 16, 48, 16),
+                                        40, 16, 40, 16),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(6),
                                     )),
