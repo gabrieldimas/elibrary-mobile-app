@@ -10,11 +10,11 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  Map<String, dynamic>? data;
-  final TextEditingController nikController = TextEditingController();
-  final TextEditingController namaController = TextEditingController();
-  final TextEditingController TTLController = TextEditingController();
-  final TextEditingController alamatController = TextEditingController();
+  // Map<String, dynamic>? data;
+  // final TextEditingController nikController = TextEditingController();
+  // final TextEditingController namaController = TextEditingController();
+  // final TextEditingController TTLController = TextEditingController();
+  // final TextEditingController alamatController = TextEditingController();
 
   @override
   void didChangeDependencies() {
@@ -23,19 +23,19 @@ class _DetailsPageState extends State<DetailsPage> {
     // Inisialisasi data berdasarkan widget turunan
     final status =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-    if (status != null) {
-      data = status;
-      nikController.text = data!['nik'] ?? '';
-      namaController.text = data!['nama'] ?? '';
-      TTLController.text = data!['tempat_lahir'] ?? '';
-    }
+    // if (status != null) {
+    //   data = status;
+    //   nikController.text = data!['nik'] ?? '';
+    //   namaController.text = data!['nama'] ?? '';
+    //   TTLController.text = data!['tempat_lahir'] ?? '';
+    // }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (data == null) {
-      return const Text('Error loading data');
-    }
+    // if (data == null) {
+    //   return const Text('Error loading data');
+    // }
 
     return Scaffold(
       appBar: AppBar(),
@@ -87,10 +87,10 @@ class _DetailsPageState extends State<DetailsPage> {
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: TextField(
-                                  controller: nikController,
+                                  // controller: nikController,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    hintText: nikController.text,
+                                    // hintText: nikController.text,
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
@@ -107,10 +107,10 @@ class _DetailsPageState extends State<DetailsPage> {
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: TextField(
-                                  controller: namaController,
+                                  // controller: namaController,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    hintText: namaController.text,
+                                    // hintText: namaController.text,
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
@@ -127,10 +127,10 @@ class _DetailsPageState extends State<DetailsPage> {
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: TextField(
-                                  controller: TTLController,
+                                  // controller: TTLController,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    hintText: TTLController.text,
+                                    // hintText: TTLController.text,
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
@@ -147,10 +147,10 @@ class _DetailsPageState extends State<DetailsPage> {
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: TextField(
-                                  controller: alamatController,
+                                  // controller: alamatController,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    hintText: alamatController.text,
+                                    // hintText: alamatController.text,
                                     // contentPadding:
                                     //     EdgeInsets.symmetric(horizontal: 20),
                                   ),
