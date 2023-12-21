@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:mobile_library/routes/routes.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -135,7 +135,9 @@ class _ScanPageState extends State {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () {
-                        uploadImage();
+                        // uploadImage();
+
+                        Navigator.pushNamed(context, AppRoutes.details);
                       },
                       child: const Center(
                         child: Text(
@@ -206,7 +208,7 @@ class _ScanPageState extends State {
       });
     }
   }
-  
+
   Future<void> uploadImage() async {
     final dio = Dio();
     final formData = FormData();
@@ -223,22 +225,22 @@ class _ScanPageState extends State {
     final res = response.data;
     message = res['message'];
     // Ekstrak data utama:
-  String nik = res['nik'];
-  String nama = res['nama'];
-  String tempatLahir = res['tempat_lahir'];
-  String tglLahir = res['tgl_lahir'];
-  String timeElapsed = res['time_elapsed'];
+    String nik = res['nik'];
+    String nama = res['nama'];
+    String tempatLahir = res['tempat_lahir'];
+    String tglLahir = res['tgl_lahir'];
+    String timeElapsed = res['time_elapsed'];
 
-  // Buat objek berisi data ekstrak:
-  Map<String, dynamic> data = {
-    'nik': nik,
-    'nama': nama,
-    'tempat_lahir': tempatLahir,
-    'tgl_lahir': tglLahir,
-    'time_elapsed': timeElapsed,
-  };
+    // Buat objek berisi data ekstrak:
+    Map<String, dynamic> data = {
+      'nik': nik,
+      'nama': nama,
+      'tempat_lahir': tempatLahir,
+      'tgl_lahir': tglLahir,
+      'time_elapsed': timeElapsed,
+    };
 
-  // Navigasi ke page lain sambil mengirim data:
-  Navigator.pushNamed(context, '/details', arguments: data);
+    // Navigasi ke page lain sambil mengirim data:
+    Navigator.pushNamed(context, '/details', arguments: data);
   }
 }

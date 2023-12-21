@@ -4,7 +4,6 @@ import 'package:mobile_library/pages/detail_page.dart';
 import 'package:mobile_library/pages/scan_page.dart';
 import 'package:mobile_library/routes/routes.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -79,6 +78,8 @@ class MyHomePage extends StatelessWidget {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DetailsPage()));
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Color(0xff5162AE),
