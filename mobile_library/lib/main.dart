@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_library/pages/detail_page.dart';
+import 'package:mobile_library/pages/listName_page.dart';
 import 'package:mobile_library/pages/scan_page.dart';
 import 'package:mobile_library/routes/routes.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.home: (context) => MyHomePage(),
         AppRoutes.scan: (context) => ScanPage(),
         AppRoutes.details: (context) => DetailsPage(),
+        AppRoutes.name: (context) => ListNamePage(),
       },
     );
   }
@@ -79,7 +81,7 @@ class MyHomePage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DetailsPage()));
+                      MaterialPageRoute(builder: (context) => ListNamePage()));
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Color(0xff5162AE),
