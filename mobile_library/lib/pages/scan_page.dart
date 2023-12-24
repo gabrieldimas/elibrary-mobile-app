@@ -135,9 +135,9 @@ class _ScanPageState extends State {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () {
-                        // uploadImage();
+                        uploadImage();
 
-                        Navigator.pushNamed(context, AppRoutes.details);
+                        // Navigator.pushNamed(context, AppRoutes.details);
                       },
                       child: const Center(
                         child: Text(
@@ -219,7 +219,7 @@ class _ScanPageState extends State {
       ),
     );
     final response = await dio.post(
-      "https://4fef-125-166-0-241.ngrok-free.app/ocr",
+      "https://b499-103-105-55-227.ngrok-free.app/ocr",
       data: formData,
     );
     final res = response.data;
@@ -227,20 +227,18 @@ class _ScanPageState extends State {
     // Ekstrak data utama:
     String nik = res['nik'];
     String nama = res['nama'];
-    String tempatLahir = res['tempat_lahir'];
-    String tglLahir = res['tgl_lahir'];
-    String timeElapsed = res['time_elapsed'];
+    String ttl = res['ttl'];
+    String alamat = res['alamat'];
 
     // Buat objek berisi data ekstrak:
-    Map<String, dynamic> data = {
+    Map<String, dynamic> ktp= {
       'nik': nik,
       'nama': nama,
-      'tempat_lahir': tempatLahir,
-      'tgl_lahir': tglLahir,
-      'time_elapsed': timeElapsed,
+      'ttl': ttl,
+      'alamat': alamat
     };
 
     // Navigasi ke page lain sambil mengirim data:
-    Navigator.pushNamed(context, '/details', arguments: data);
+    Navigator.pushNamed(context, '/details', arguments: ktp);
   }
 }
