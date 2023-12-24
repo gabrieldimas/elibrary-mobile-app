@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ListNamePage extends StatefulWidget {
@@ -8,9 +9,22 @@ class ListNamePage extends StatefulWidget {
 }
 
 class _ListNamePageState extends State<ListNamePage> {
-  //Inisialisasi List Peminjan
-  List<String> names = ['John Doe', 'Jane Doe', 'Bob Smith', 'Alice Johnson'];
-  String selectedName = '';
+  // List to store fetched data from Firebase
+  List<Map<String, dynamic>> namesData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  fetchData() async {
+    // Fetch data from the "KTP" collection
+    final snapshot = await FirebaseFirestore.instance.collection('KTP').get();
+    setState(() {
+      namesData = snapshot.docs.map((doc) => doc.data()).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,19 +40,19 @@ class _ListNamePageState extends State<ListNamePage> {
                 Text(
                   'List Nama Peminjam',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
-                  
                 ),
                 SizedBox(height: 16),
-                // ListView.builder untuk membuat daftar dinamis
+                // Use ListView.builder to create a dynamic list based on fetched data
                 ListView.builder(
                   shrinkWrap: true,
-                  itemCount: names.length,
+                  itemCount: namesData.length,
                   itemBuilder: (context, index) {
+                    final nameData = namesData[index];
                     return ExpansionTile(
-                      title: Text(names[index]),
+                      title: Text(nameData['nama']),
                       backgroundColor: Colors.grey[200],
                       children: [
-                        // Widget untuk menampilkan detail nama yang diklik
+                        // Display details from fetched data
                         Container(
                           padding: EdgeInsets.all(16),
                           child: Column(
@@ -59,19 +73,16 @@ class _ListNamePageState extends State<ListNamePage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text('NIK:'),
-                                      Text('Nama: '),
-                                      Text('TTL:'),
-                                      Text('Alamat: '),
-                                      Text('Buku: '),
+                                      Text('NIK: ${nameData['nik']}'),
+                                      Text('Nama: ${nameData['nama']}'),
+                                      Text('TTL: ${nameData['ttl']}'),
+                                      Text('Alamat: ${nameData['alamat']}'),
+                                      Text('Buku: ${nameData['buku']}'),
                                       SizedBox(width: 20),
                                       ElevatedButton(
                                         onPressed: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             DetailsPage()));
+                                          // Handle "Kembalikan" button action
+                                          deleteData(nameData['nama'], context);
                                         },
                                         style: ElevatedButton.styleFrom(
                                             primary: Color(0xff5162AE),
@@ -104,4 +115,18 @@ class _ListNamePageState extends State<ListNamePage> {
       ),
     );
   }
+}
+
+// Function to delete data from Firebase and notify user and refresh the page
+deleteData(String name, BuildContext context) async {
+  await FirebaseFirestore.instance.collection('KTP').doc(name).delete();
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text('Data berhasil dihapus'),
+    ),
+  );
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => ListNamePage()),
+  );
 }

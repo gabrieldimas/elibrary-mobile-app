@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1065987171723",
+    "firebase_url": "https://mobilelibrary-6856f-default-rtdb.firebaseio.com",
+    "project_id": "mobilelibrary-6856f",
+    "storage_bucket": "mobilelibrary-6856f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065987171723:android:00fb1052985361a392bb8e",
+        "android_client_info": {
+          "package_name": "com.example.mobile_library"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7yf_jJg4d2yJ7qF9vDKZ7Ztc9vJc5Mh4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

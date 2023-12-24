@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_library/routes/routes.dart';
 import 'package:mobile_library/pages/scan_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage({super.key});
@@ -15,6 +16,46 @@ class _DetailsPageState extends State<DetailsPage> {
   // final TextEditingController namaController = TextEditingController();
   // final TextEditingController TTLController = TextEditingController();
   // final TextEditingController alamatController = TextEditingController();
+
+  String? nik, nama, ttl, alamat, buku;
+
+  getNik(nik) {
+    this.nik = nik;
+  }
+
+  getNama(nama) {
+    this.nama = nama;
+  }
+
+  getTtl(ttl) {
+    this.ttl = ttl;
+  }
+
+  getAlamat(alamat) {
+    this.alamat = alamat;
+  }
+
+  getBuku(buku) {
+    this.buku = buku;
+  }
+
+  createData() {
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("KTP").doc(nama);
+
+    // create Map
+    Map<String, dynamic> ktp = {
+      "nik": nik,
+      "nama": nama,
+      "ttl": ttl,
+      "alamat": alamat,
+      "buku": buku,
+    };
+
+    documentReference.set(ktp).whenComplete(() {
+      Navigator.pushNamed(context, AppRoutes.name);
+    });
+  }
 
   @override
   void didChangeDependencies() {
@@ -94,6 +135,9 @@ class _DetailsPageState extends State<DetailsPage> {
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
+                                  onChanged: (String nik) {
+                                    getNik(nik);
+                                  },
                                 ),
                               ),
                             ],
@@ -114,6 +158,9 @@ class _DetailsPageState extends State<DetailsPage> {
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
+                                  onChanged: (String nama) {
+                                    getNama(nama);
+                                  },
                                 ),
                               ),
                             ],
@@ -134,6 +181,9 @@ class _DetailsPageState extends State<DetailsPage> {
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
+                                  onChanged: (String ttl) {
+                                    getTtl(ttl);
+                                  },
                                 ),
                               ),
                             ],
@@ -154,6 +204,9 @@ class _DetailsPageState extends State<DetailsPage> {
                                     // contentPadding:
                                     //     EdgeInsets.symmetric(horizontal: 20),
                                   ),
+                                  onChanged: (String alamat) {
+                                    getAlamat(alamat);
+                                  },
                                 ),
                               ),
                             ],
@@ -164,7 +217,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              const Padding(
+                              Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -173,6 +226,9 @@ class _DetailsPageState extends State<DetailsPage> {
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
+                                  onChanged: (String buku) {
+                                    getBuku(buku);
+                                  },
                                 ),
                               ),
                             ],
@@ -202,10 +258,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               SizedBox(width: 20), // Jarak antara tombol
                               ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => DetailsPage()));
+                                  createData();
                                 },
                                 style: ElevatedButton.styleFrom(
                                     primary: Color(0xff5162AE),
