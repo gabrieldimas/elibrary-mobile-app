@@ -11,45 +11,49 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  // Map<String, dynamic>? data;
-  // final TextEditingController nikController = TextEditingController();
-  // final TextEditingController namaController = TextEditingController();
-  // final TextEditingController TTLController = TextEditingController();
-  // final TextEditingController alamatController = TextEditingController();
+  late String? nik, nama, ttl, alamat;
 
-  String? nik, nama, ttl, alamat, buku;
+  // Declare controllers at the beginning of your _DetailsPageState class
+  TextEditingController nikController = TextEditingController();
+  TextEditingController namaController = TextEditingController();
+  TextEditingController ttlController = TextEditingController();
+  TextEditingController alamatController = TextEditingController();
+  TextEditingController bukuController = TextEditingController();
 
-  getNik(nik) {
-    this.nik = nik;
-  }
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Get arguments passed from ScanPage
+    final Map<String, dynamic>? ktp =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
 
-  getNama(nama) {
-    this.nama = nama;
-  }
+    if (ktp != null) {
+      setState(() {
+        nik = ktp['nik'];
+        nama = ktp['nama'];
+        ttl = ktp['ttl'];
+        alamat = ktp['alamat'];
 
-  getTtl(ttl) {
-    this.ttl = ttl;
-  }
-
-  getAlamat(alamat) {
-    this.alamat = alamat;
-  }
-
-  getBuku(buku) {
-    this.buku = buku;
+        // Set the controller values
+        nikController.text = nik ?? '';
+        namaController.text = nama ?? '';
+        ttlController.text = ttl ?? '';
+        alamatController.text = alamat ?? '';
+      });
+    }
   }
 
   createData() {
     DocumentReference documentReference =
-        FirebaseFirestore.instance.collection("KTP").doc(nama);
+        FirebaseFirestore.instance.collection("KTP").doc(namaController.text);
 
     // create Map
     Map<String, dynamic> ktp = {
-      "nik": nik,
-      "nama": nama,
-      "ttl": ttl,
-      "alamat": alamat,
-      "buku": buku,
+      "nik": nikController.text,
+      "nama": namaController.text,
+      "ttl": ttlController.text,
+      "alamat": alamatController.text,
+      "buku": bukuController.text,
     };
 
     documentReference.set(ktp).whenComplete(() {
@@ -58,44 +62,9 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    // Inisialisasi data berdasarkan widget turunan
-    final status =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-    // if (status != null) {
-    //   data = status;
-    //   nikController.text = data!['nik'] ?? '';
-    //   namaController.text = data!['nama'] ?? '';
-    //   TTLController.text = data!['tempat_lahir'] ?? '';
-    // }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // if (data == null) {
-    //   return const Text('Error loading data');
-    // }
-
     return Scaffold(
       appBar: AppBar(),
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       Text('NIK: ${data!['nik']}', style: const TextStyle(fontSize: 20)),
-      //       Text('Nama: ${data!['nama']}',
-      //           style: const TextStyle(fontSize: 20)),
-      //       Text('Tempat Lahir: ${data!['tempat_lahir']}',
-      //           style: const TextStyle(fontSize: 20)),
-      //       Text('Tanggal Lahir: ${data!['tgl_lahir']}',
-      //           style: const TextStyle(fontSize: 20)),
-      //       Text('Waktu Diproses: ${data!['time_elapsed']} detik',
-      //           style: const TextStyle(fontSize: 20)),
-      //     ],
-      //   ),
-      // ),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
@@ -128,16 +97,13 @@ class _DetailsPageState extends State<DetailsPage> {
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: TextField(
-                                  // controller: nikController,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    // hintText: nikController.text,
+                                    hintText: "1234567890123456",
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
-                                  onChanged: (String nik) {
-                                    getNik(nik);
-                                  },
+                                  controller: nikController,
                                 ),
                               ),
                             ],
@@ -151,16 +117,13 @@ class _DetailsPageState extends State<DetailsPage> {
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: TextField(
-                                  // controller: namaController,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    // hintText: namaController.text,
+                                    hintText: "John Doe",
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
-                                  onChanged: (String nama) {
-                                    getNama(nama);
-                                  },
+                                  controller: namaController,
                                 ),
                               ),
                             ],
@@ -174,16 +137,13 @@ class _DetailsPageState extends State<DetailsPage> {
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: TextField(
-                                  // controller: TTLController,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    // hintText: TTLController.text,
+                                    hintText: "DD/MM/YYYY",
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
-                                  onChanged: (String ttl) {
-                                    getTtl(ttl);
-                                  },
+                                  controller: ttlController,
                                 ),
                               ),
                             ],
@@ -197,16 +157,13 @@ class _DetailsPageState extends State<DetailsPage> {
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: TextField(
-                                  // controller: alamatController,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    // hintText: alamatController.text,
-                                    // contentPadding:
-                                    //     EdgeInsets.symmetric(horizontal: 20),
+                                    hintText: "Jl. Kenangan No. 1",
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 8),
                                   ),
-                                  onChanged: (String alamat) {
-                                    getAlamat(alamat);
-                                  },
+                                  controller: alamatController,
                                 ),
                               ),
                             ],
@@ -226,9 +183,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8),
                                   ),
-                                  onChanged: (String buku) {
-                                    getBuku(buku);
-                                  },
+                                  controller: bukuController,
                                 ),
                               ),
                             ],
@@ -270,7 +225,6 @@ class _DetailsPageState extends State<DetailsPage> {
                                     )),
                                 child: Text(
                                   'Submit',
-                                  // style: GoogleFonts.poppins(fontSize: 14),
                                 ),
                               ),
                             ],
