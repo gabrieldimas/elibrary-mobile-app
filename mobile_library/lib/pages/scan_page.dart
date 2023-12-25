@@ -36,7 +36,7 @@ class _ScanPageState extends State {
               height: 250,
               child: DottedBorder(
                   borderType: BorderType.RRect,
-                  radius: const Radius.circular(12),
+                  radius: const Radius.circular(10),
                   color: Colors.blueGrey,
                   strokeWidth: 1,
                   dashPattern: const [5, 5],
@@ -46,7 +46,7 @@ class _ScanPageState extends State {
                           ? Image.file(File(imageFile!.path), fit: BoxFit.cover)
                           : const Icon(
                               Icons.image_outlined,
-                              color: Colors.blueGrey,
+                              color: const Color.fromARGB(169, 169, 169, 169),
                             ),
                     ),
                   )),
@@ -60,10 +60,10 @@ class _ScanPageState extends State {
                   width: size.width,
                   height: 50,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.blueGrey),
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color.fromARGB(169, 169, 169, 169)),
                   child: Material(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(10),
                     color: Colors.transparent,
                     child: InkWell(
                       splashColor: Colors.transparent,
@@ -87,15 +87,15 @@ class _ScanPageState extends State {
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Material(
                 elevation: 3,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(10),
                 child: Container(
                   width: size.width,
                   height: 50,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                       color: Colors.yellow.shade700),
                   child: Material(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(10),
                     color: Colors.transparent,
                     child: InkWell(
                       splashColor: Colors.transparent,
@@ -126,10 +126,10 @@ class _ScanPageState extends State {
                   width: size.width,
                   height: 50,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.blue.shade700),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xff5162AE)),
                   child: Material(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(10),
                     color: Colors.transparent,
                     child: InkWell(
                       splashColor: Colors.transparent,
@@ -231,7 +231,7 @@ class _ScanPageState extends State {
     String alamat = res['alamat'];
 
     // Buat objek berisi data ekstrak:
-    Map<String, dynamic> ktp= {
+    Map<String, dynamic> ktp = {
       'nik': nik,
       'nama': nama,
       'ttl': ttl,
